@@ -62,6 +62,9 @@ public class MainController {
                 .body(exception.getMessage() + " (" + getParams(request) + ").");
     }
 
+    // returns params with their values from the request, i.e.
+    // http://localhost:8080/romannumeral?min=1&max=100 -> "min=1, max=100"
+    // used for error handling
     private String getParams(WebRequest request) {
         StringBuilder params = new StringBuilder();
         for (Iterator<String> it = request.getParameterNames(); it.hasNext(); ) {
