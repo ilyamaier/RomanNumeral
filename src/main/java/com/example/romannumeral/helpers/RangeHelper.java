@@ -7,9 +7,12 @@ public class RangeHelper {
 
     private final int min, max;
 
-    public RangeHelper(int min, int max) {
-        if (min < 1 || max > 3999) throw new IllegalArgumentException("Given input isn't in range 1-3999.");
-        if (min >= max) throw new IllegalArgumentException("Given min is greater than or equal to max.");
+    public RangeHelper(Integer min, Integer max) {
+        if (min == null || max == null) throw new IllegalArgumentException("Given input is null");
+
+        if (min < 1 || max > 3999) throw new IllegalArgumentException("Given input isn't in range 1-3999");
+        if (min >= max) throw new IllegalArgumentException("Given min is greater than or equal to max");
+
         this.min = min;
         this.max = max;
     }

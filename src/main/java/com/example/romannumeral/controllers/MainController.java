@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
+import java.util.Iterator;
 
 @RestController
 public class MainController {
@@ -43,20 +46,30 @@ public class MainController {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<String> handleMethodArgumentTypeMismatchException() {
+    public ResponseEntity<String> handleMethodArgumentTypeMismatchException(WebRequest request) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body("Given input isn't of type Integer.");
+                .body("Given input isn't of type Integer" + " (" + getParams(request) + ").");
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<String> handleIllegalArgumentException(
-            IllegalArgumentException exception
+            WebRequest request, IllegalArgumentException exception
     ) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
+                .body(exception.getMessage() + " (" + getParams(request) + ").");
+    }
+
+    private String getParams(WebRequest request) {
+        StringBuilder params = new StringBuilder();
+        for (Iterator<String> it = request.getParameterNames(); it.hasNext(); ) {
+            String key = it.next();
+            params.append(key).append("=").append(request.getParameter(key)).append(", ");
+        }
+        params.delete(params.length() - 2, params.length());
+        return params.toString();
     }
 
 }

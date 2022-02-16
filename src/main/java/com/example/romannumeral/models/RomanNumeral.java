@@ -8,7 +8,7 @@ public class RomanNumeral {
     private final String output;
 
     public RomanNumeral(Integer input) {
-        if (input == null) throw new IllegalArgumentException("Given input is null.");
+        if (input == null) throw new IllegalArgumentException("Given input is null");
         this.input = input.toString();
         this.output = convertToRoman(input);
     }
@@ -42,7 +42,7 @@ public class RomanNumeral {
      * @throws IllegalArgumentException if the given input isn't in the valid range.
      */
     public static String convertToRoman(int input) {
-        if (input < 1 || input > 3999) throw new IllegalArgumentException("Given input isn't in range 1-3999.");
+        if (input < 1 || input > 3999) throw new IllegalArgumentException("Given input isn't in range 1-3999");
 
         StringBuilder roman = new StringBuilder();
 
