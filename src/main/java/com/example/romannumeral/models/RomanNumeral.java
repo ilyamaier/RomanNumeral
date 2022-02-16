@@ -1,5 +1,7 @@
 package com.example.romannumeral.models;
 
+import java.util.Objects;
+
 public class RomanNumeral {
 
     private final String input;
@@ -17,6 +19,14 @@ public class RomanNumeral {
 
     public String getOutput() {
         return output;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RomanNumeral that = (RomanNumeral) o;
+        return Objects.equals(input, that.input) && Objects.equals(output, that.output);
     }
 
     /**
