@@ -11,6 +11,12 @@ Here is also the [reference](https://en.wikipedia.org/wiki/Roman_numerals) from 
 
 Simply run ```./gradlew bootRun``` in your command line to run the project locally on ```localhost```.
 
+To run the app in a docker container use:
+```
+docker build -t romannumeral:1.0 .
+docker run -d -p 8080:8080 -t romannumeral:1.0
+```
+
 ## Project Structure
 The project is structured package-by-layer. The main logic of the two queries is contained in ```controllers/MainController.java```. All query methods and all methods for conversing numbers have a detailed documentation in JavaDoc style. Besides that, there are also JUnit tests for the query requests as well as for the number conversion methods.
 
