@@ -71,7 +71,7 @@ public class RomanNumeralTest {
     }
 
     @Test
-    void testValidRange() {
+    void testInvalidRange() {
         assertThrows(IllegalArgumentException.class, () -> RomanNumeral.convertToRoman(0));
         assertThrows(IllegalArgumentException.class, () -> RomanNumeral.convertToRoman(4000));
         assertThrows(IllegalArgumentException.class, () -> RomanNumeral.convertToRoman(-1));
