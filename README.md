@@ -21,6 +21,6 @@ docker run -d -p 8080:8080 -t romannumeral:1.0
 The project is structured package-by-layer. The main logic of the two queries is contained in ```controllers/MainController.java```. All query methods and all methods for conversing numbers have a detailed documentation in JavaDoc style. Besides that, there are also JUnit tests for the query requests as well as for the number conversion methods.
 
 ## Dependencies used
--```org.springframework.boot:spring-boot-starter-web``` for core logic
+- ```org.springframework.boot:spring-boot-starter-web``` for core logic
 
--```org.springframework.boot:spring-boot-starter-test``` for testing
+- ```org.springframework.boot:spring-boot-starter-test``` for testing
